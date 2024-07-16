@@ -1,0 +1,22 @@
+service: serverless-user
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-west-2
+
+functions:
+  createUser:
+    handler: src/createUser.handler
+    events:
+      - httpApi:
+          path: /users
+          method: post
+  getUser:
+    handler: src/getUser.handler
+    events:
+      - httpApi:
+          path: /users
+          method: get
